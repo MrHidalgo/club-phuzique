@@ -1,0 +1,13 @@
+/// @include mixinFontFace("JournalRegular", "-Bold", "../fonts/", normal, otf eot woff2 woff ttf svg);
+/// ===============
+
+@include mixinFontFace("CheddarGothicSans", "", "../fonts/", normal, woff2 woff ttf svg);
+@include mixinFontFace("CheddarGothicSans", "-Italic", "../fonts/", normal, woff2 woff ttf svg);
+@include mixinFontFace("CheddarGothicStencil", "", "../fonts/", normal, woff2 woff ttf svg);
+@include mixinFontFace("CheddarGothicStencil", "-Italic", "../fonts/", normal, woff2 woff ttf svg);
+@include mixinFontFace("CheddarGothicSlab", "", "../fonts/", normal, woff2 woff ttf svg);
+@include mixinFontFace("CheddarGothicSlab", "-Italic", "../fonts/", normal, woff2 woff ttf svg);
+@include mixinFontFace("CheddarGothicSerif", "", "../fonts/", normal, woff2 woff ttf svg);
+@include mixinFontFace("CheddarGothicSerif", "-Italic", "../fonts/", normal, woff2 woff ttf svg);
+
+

@@ -1,0 +1,36 @@
+# FOLDER
+# ==========
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.vscode
+.github
+.env
+.idea/*
+.gulp/*
+.cache/*
+.sass-cache/*
+.tmp/*
+_tmp/*
+node_modules/*
+vendor/*
+bower/*
+
+# FILES
+# ==========
+package-lock.json
+
+# EXTENSIONS
+# ==========
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~
