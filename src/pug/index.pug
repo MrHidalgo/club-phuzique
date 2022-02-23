@@ -5,7 +5,9 @@ pageClassName: p-home
 ---
 extends shared/_layout
 
+block footer
 block content
   main.main(class!= pageClassName)
 
+    include components/together
     include components/benefits

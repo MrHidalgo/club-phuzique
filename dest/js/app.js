@@ -101,7 +101,12 @@ __webpack_require__.r(__webpack_exports__);
 // ========================================
 
 window.addEventListener('load', function (ev) {
-  // COMMON
+  var _tlMousemove = new TimelineMax({
+    yoyo: true,
+    repeat: -1
+  }); // COMMON
+
+
   _common_common__WEBPACK_IMPORTED_MODULE_0__["default"].initLoad(); // MACROS
 }, false); // EVENT LISTENER - SCROLL
 // ========================================
