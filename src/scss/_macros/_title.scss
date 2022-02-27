@@ -17,6 +17,18 @@
   @include adaptive(767) {
     font-size: 65px;
   }
+
+  &--small {
+    font-size: 70px;
+    letter-spacing: 2px;
+    @include adaptive(767) {
+      font-size: 65px;
+    }
+
+    span {
+      color: #ff511c;
+    }
+  }
 }
 
 // TITLE :: END
