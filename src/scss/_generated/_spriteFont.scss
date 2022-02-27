@@ -30,6 +30,9 @@
 	@if $filename == check-mark {
 		$char: "\E001";
 	}
+	@if $filename == discord {
+		$char: "\E002";
+	}
 
 	@return $char;
 }
@@ -47,5 +50,9 @@
 
 .icon-check-mark {
 	@include icon(check-mark);
+
+}
+.icon-discord {
+	@include icon(discord);
 
 }

@@ -38,6 +38,9 @@
   &__mask {
     overflow: hidden;
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     color: #FF511C;
     font-size: 18px;
