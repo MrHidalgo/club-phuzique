@@ -154,7 +154,9 @@
   }
 
   &__btn {
-    justify-content: center;
+    @include adaptive(767) {
+      justify-content: center;
+    }
   }
 }
 

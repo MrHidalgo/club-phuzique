@@ -823,10 +823,12 @@ picture {
 .welcome__desc strong {
   font-weight: bold;
 }
-.welcome__btn {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+@media screen and (max-width: 767px) {
+  .welcome__btn {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .roadmap {
