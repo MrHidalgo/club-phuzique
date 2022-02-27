@@ -64,7 +64,7 @@
     }
 
     &-left {
-      @include adaptive(767) {
+      @include adaptive(1023) {
         display: none;
       }
     }
@@ -72,19 +72,27 @@
     &-right {
       display: flex;
       justify-content: flex-end;
-      @include adaptive(767) {
-        justify-content: center;
+      @include adaptive(1023) {
+        justify-content: space-between;
+        width: 100%;
       }
 
       > div {
         &:nth-of-type(1) {
           display: none;
+          @include adaptive(1023) {
+            display: flex;
+            align-items: center;
+          }
         }
       }
     }
 
     .c-btn {
       height: 45px;
+      @include adaptive(767) {
+        height: 35px;
+      }
 
       &:hover {
         span {
@@ -96,11 +104,18 @@
         width: 100%;
         max-width: 150px;
         min-width: 150px;
+        @include adaptive(767) {
+          max-width: 125px;
+          min-width: 125px;
+        }
       }
 
       u {
         font-size: 14px;
         color: #ffffff;
+        @include adaptive(767) {
+          font-size: 13px;
+        }
 
         .icon-font {
           margin-right: 10px;
@@ -112,6 +127,9 @@
         opacity: 0;
         font-size: 14px;
         color: #ffffff;
+        @include adaptive(767) {
+          font-size: 13px;
+        }
 
         .icon-font {
           margin-right: 10px;
@@ -124,6 +142,9 @@
   &__nav {
     display: flex;
     align-items: center;
+    @include adaptive(1023) {
+      display: none;
+    }
 
     a {
       position: relative;
@@ -165,6 +186,17 @@
         background-size: contain;
         @include transition(opacity, visibility);
       }
+    }
+  }
+
+  &__logo {
+    display: block;
+    height: auto;
+    @include adaptive(1023) {
+      max-width: 225px;
+    }
+    @include adaptive(767) {
+      max-width: 125px;
     }
   }
 }

@@ -16,6 +16,10 @@
   border: 1px solid #FF871C;
   box-shadow: 0px 5px 21px 0px rgba(255, 81, 28, 0.29);
   @include transition(box-shadow);
+  @include adaptive(767) {
+    max-width: 220px;
+    height: 55px;
+  }
 
   &:hover {
     box-shadow: 0px 5px 21px 0px rgba(255, 81, 28, 0);
