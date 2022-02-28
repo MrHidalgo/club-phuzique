@@ -239,6 +239,42 @@ picture {
   padding-left: 15px;
 }
 
+/* CUSTOM CURSOR */
+* {
+  cursor: none !important;
+}
+
+.cursor-dot,
+.cursor-dot-outline {
+  pointer-events: none;
+  z-index: 99999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #dc5656;
+}
+
+.cursor-dot-outline {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(220, 86, 86, 0.5);
+}
+
 .icon-font {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -4,7 +4,6 @@ import Common from "./common/common";
 // EVENT LISTENER - LOAD
 // ========================================
 window.addEventListener('load', (ev) => {
-  const _tlMousemove = new TimelineMax({yoyo:true, repeat:-1});
 
   // COMMON
   Common.initLoad();
@@ -40,6 +39,42 @@ window.addEventListener('load', (ev) => {
     });
   };
 
+  const floatingAnimation = () => {
+    function random(min, max) {
+      return min + Math.random() * (max - min);
+    }
+
+    function randomFloat(element, positions, duration) {
+      const tl = new TimelineMax({
+        repeat: -1,
+        yoyo: true,
+        delay: Math.random() * duration
+      });
+
+      for(let i = 0; i < positions; i++) {
+        tl.to(element, duration, {
+          x: random(xMin, xMax),
+          y: random(yMin, yMax),
+          ease: Sine.easeInOut
+        });
+      }
+
+      return tl;
+    }
+
+    let xMin = -20,
+      xMax = 20,
+      yMin = -30,
+      yMax = 30,
+      positionsPerElement = 5,
+      secondsPerIteration = 4,
+      elements = $("[floating-node-js]");
+
+    for(let i = 0; i < elements.length; i++) {
+      randomFloat(elements[i], positionsPerElement, secondsPerIteration);
+    }
+  };
+
   const gaspAnimation = () => {
     $(".main").mousemove(function(e) {
       parallaxIt(e, "#welcome", "#welcomeAnimationImg1", -5);
@@ -63,6 +98,120 @@ window.addEventListener('load', (ev) => {
     }
   };
 
+  const customCursor = () => {
+    var cursor = {
+      delay: 8,
+      _x: 0,
+      _y: 0,
+      endX: (window.innerWidth / 2),
+      endY: (window.innerHeight / 2),
+      cursorVisible: true,
+      cursorEnlarged: false,
+      $dot: document.querySelector('.cursor-dot'),
+      $outline: document.querySelector('.cursor-dot-outline'),
+
+      init: function() {
+        // Set up element sizes
+        this.dotSize = this.$dot.offsetWidth;
+        this.outlineSize = this.$outline.offsetWidth;
+
+        this.setupEventListeners();
+        this.animateDotOutline();
+      },
+
+      setupEventListeners: function() {
+        var self = this;
+
+        // Anchor hovering
+        document.querySelectorAll('a').forEach(function(el) {
+          el.addEventListener('mouseover', function() {
+            self.cursorEnlarged = true;
+            self.toggleCursorSize();
+          });
+          el.addEventListener('mouseout', function() {
+            self.cursorEnlarged = false;
+            self.toggleCursorSize();
+          });
+        });
+
+        // Click events
+        document.addEventListener('mousedown', function() {
+          self.cursorEnlarged = true;
+          self.toggleCursorSize();
+        });
+        document.addEventListener('mouseup', function() {
+          self.cursorEnlarged = false;
+          self.toggleCursorSize();
+        });
+
+
+        document.addEventListener('mousemove', function(e) {
+          // Show the cursor
+          self.cursorVisible = true;
+          self.toggleCursorVisibility();
+
+          // Position the dot
+          self.endX = e.pageX;
+          self.endY = e.pageY;
+          self.$dot.style.top = self.endY + 'px';
+          self.$dot.style.left = self.endX + 'px';
+        });
+
+        // Hide/show cursor
+        document.addEventListener('mouseenter', function(e) {
+          self.cursorVisible = true;
+          self.toggleCursorVisibility();
+          self.$dot.style.opacity = 1;
+          self.$outline.style.opacity = 1;
+        });
+
+        document.addEventListener('mouseleave', function(e) {
+          self.cursorVisible = true;
+          self.toggleCursorVisibility();
+          self.$dot.style.opacity = 0;
+          self.$outline.style.opacity = 0;
+        });
+      },
+
+      animateDotOutline: function() {
+        var self = this;
+
+        self._x += (self.endX - self._x) / self.delay;
+        self._y += (self.endY - self._y) / self.delay;
+        self.$outline.style.top = self._y + 'px';
+        self.$outline.style.left = self._x + 'px';
+
+        requestAnimationFrame(this.animateDotOutline.bind(self));
+      },
+
+      toggleCursorSize: function() {
+        var self = this;
+
+        if (self.cursorEnlarged) {
+          self.$dot.style.transform = 'translate(-50%, -50%) scale(0.75)';
+          self.$outline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        } else {
+          self.$dot.style.transform = 'translate(-50%, -50%) scale(1)';
+          self.$outline.style.transform = 'translate(-50%, -50%) scale(1)';
+        }
+      },
+
+      toggleCursorVisibility: function() {
+        var self = this;
+
+        if (self.cursorVisible) {
+          self.$dot.style.opacity = 1;
+          self.$outline.style.opacity = 1;
+        } else {
+          self.$dot.style.opacity = 0;
+          self.$outline.style.opacity = 0;
+        }
+      }
+    }
+
+    cursor.init();
+  };
+
   const wowScrollAnimation = () => {
     new WOW().init();
   };
@@ -70,7 +219,9 @@ window.addEventListener('load', (ev) => {
 
   initHeaderFixed();
   smoothScrollAnchor();
+  floatingAnimation();
   gaspAnimation();
+  customCursor();
   wowScrollAnimation();
 
 
