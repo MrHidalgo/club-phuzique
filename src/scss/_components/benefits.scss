@@ -3,8 +3,12 @@
 .benefits {
   padding-top: 100px;
   padding-bottom: 200px;
-  @include adaptive(1279) {
-    
+  @include adaptive(1365) {
+    padding-top: 50px;
+    padding-bottom: 150px;
+  }
+  @include adaptive(1023) {
+    padding-bottom: 100px;
   }
 
   &__title {
@@ -18,6 +22,9 @@
       justify-content: center;
       margin-bottom: 100px;
       text-align: center;
+      @include adaptive(1023) {
+        margin-bottom: 50px;
+      }
     }
 
     img {
@@ -56,6 +63,9 @@
     padding-bottom: 100px;
     margin-left: auto;
     margin-right: auto;
+    @include adaptive(1023) {
+      padding-bottom: 50px;
+    }
 
     li {
       display: flex;
@@ -63,12 +73,18 @@
 
       &:not(:last-of-type) {
         padding-bottom: 30px;
+        @include adaptive(767) {
+          padding-bottom: 20px;
+        }
       }
 
       > div {
         &:nth-of-type(1) {
           width: 50px;
           padding-top: 2px;
+          @include adaptive(767) {
+            width: 35px;
+          }
         }
         &:nth-of-type(2) {
           flex: 1;
@@ -81,12 +97,18 @@
     .icon-font {
       color: #ff511c;
       font-size: 25px;
+      @include adaptive(767) {
+        font-size: 20px;
+      }
     }
 
     p {
       font-size: 17px;
       font-weight: bold;
       color: #ffffff;
+      @include adaptive(767) {
+        font-size: 14px;
+      }
 
       span {
         color: #ff511c;
