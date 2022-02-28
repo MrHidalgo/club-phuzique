@@ -14,7 +14,7 @@
   }
 
   .c-grid {
-    //z-index: 0;
+    z-index: 20;
     position: absolute;
     left: 0;
     right: 0;
@@ -51,49 +51,61 @@
 
         > div {
           position: relative;
+
+          > div {
+            z-index: 5;
+            position: absolute;
+            height: 100%;
+
+            &:nth-of-type(1) {
+              top: 0;
+              right: 0;
+              transform: translateX(35%);
+              mix-blend-mode: lighten;
+            }
+            &:nth-of-type(2) {
+              top: 0;
+              left: 0;
+              transform: translateX(-35%);
+              mix-blend-mode: lighten;
+            }
+            &:nth-of-type(3),
+            &:nth-of-type(4) {
+              top: 0;
+              left: 0;
+              right: 0;
+              margin-left: auto;
+              margin-right: auto;
+            }
+            &:nth-of-type(3) {
+              mix-blend-mode: lighten;
+              transform: translate(-25%, -10%);
+            }
+            &:nth-of-type(4) {
+              transform: translate(-2%, -4%) translate3d(0, 0, 0);
+            }
+            &:nth-of-type(5) {
+              z-index: 10;
+              position: relative;
+              margin-left: auto;
+              margin-right: auto;
+            }
+          }
         }
 
         img {
-          z-index: 5;
-          position: absolute;
           display: block;
           max-width: 100%;
           height: auto;
           max-height: 100%;
 
-          &:nth-of-type(1) {
-            top: 0;
-            right: 0;
-            transform: translateX(35%);
-            mix-blend-mode: lighten;
-          }
-
-          &:nth-of-type(2) {
-            top: 0;
-            left: 0;
-            transform: translateX(-35%);
-            mix-blend-mode: lighten;
-          }
-
-          &:nth-of-type(3),
-          &:nth-of-type(4) {
-            top: 0;
-            left: 0;
-            right: 0;
-            margin-left: auto;
-            margin-right: auto;
-          }
-
 
           &:nth-of-type(3) {
             max-width: 200%;
-            mix-blend-mode: lighten;
-            transform: translate(-25%, -10%);
           }
 
           &:nth-of-type(4) {
             max-width: 120%;
-            transform: translate(-2%, -4%);
           }
 
           &:last-of-type {
@@ -105,6 +117,8 @@
       }
 
       &:nth-of-type(2) {
+        z-index: 5;
+        position: relative;
         padding-top: 30px;
         transform: translateX(-90px);
         @include adaptive(1279) {
