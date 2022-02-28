@@ -1,7 +1,7 @@
 // HEADER :: START
 
 .header {
-  z-index: 999;
+  z-index: 995;
   position: fixed;
   top: 0;
   left: 0;
@@ -82,6 +82,12 @@
           display: none;
           @include adaptive(1023) {
             display: flex;
+          }
+        }
+        &:nth-of-type(2) {
+          display: none;
+          @include adaptive(1023) {
+            display: flex;
             align-items: center;
           }
         }
@@ -89,9 +95,18 @@
     }
 
     .c-btn {
+      width: 100%;
+      max-width: 150px;
+      min-width: 150px;
       height: 45px;
       @include adaptive(767) {
+        max-width: 125px;
+        min-width: 125px;
         height: 35px;
+      }
+
+      &:not(:last-of-type) {
+        margin-right: 15px;
       }
 
       &:hover {
@@ -101,12 +116,8 @@
       }
 
       &__wrapper {
-        width: 100%;
-        max-width: 150px;
-        min-width: 150px;
         @include adaptive(767) {
-          max-width: 125px;
-          min-width: 125px;
+          display: none;
         }
       }
 

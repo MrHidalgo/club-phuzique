@@ -13,6 +13,11 @@ nav#header.header
       .header__wrapper-right
         div
 
+          +hamburger()
+
+        div
+
+
           img.header__logo(src="img/logo.png" srcset="img/logo@2x.png 2x" alt="")
 
         .c-btn__wrapper.c-btn__wrapper--center
@@ -21,8 +26,14 @@ nav#header.header
               i.icon-font.icon-discord
               != "Join Now"
             span
-              i.ico-font.icon-discord
+              i.icon-font.icon-discord
               != "Join Now"
+
+          a.c-btn(href="#")
+            u.c-btn__mask
+              != "Connect Wallet"
+            span
+              != "Connect Wallet"
 
 
 // HEADER :: END

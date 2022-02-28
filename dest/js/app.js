@@ -119,6 +119,10 @@ window.addEventListener('load', function (ev) {
   };
 
   var smoothScrollAnchor = function smoothScrollAnchor() {
+    var btn = document.querySelector("[hamburger-js]"),
+        hideScrollContainer = document.querySelectorAll("html, body"),
+        mobileContainer = document.querySelector("[mobile-block-js]"),
+        overlayNode = document.querySelector('#overlay');
     document.querySelectorAll('.header__nav a[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener('click', function (ev) {
         ev.preventDefault();
@@ -127,6 +131,19 @@ window.addEventListener('load', function (ev) {
         document.querySelector(this.getAttribute('href')).scrollIntoView({
           behavior: 'smooth'
         });
+
+        if (ev.currentTarget.closest('.menu')) {
+          btn.classList.remove("is-active");
+          mobileContainer.classList.remove("is-open");
+          mobileContainer.classList.add("is-animated");
+          overlayNode.style.display = 'none';
+          hideScrollContainer.forEach(function (val, idx) {
+            val.classList.remove("is-hideScroll");
+          });
+          setTimeout(function () {
+            mobileContainer.classList.remove("is-animated");
+          }, 300);
+        }
       });
     });
   };
@@ -286,6 +303,36 @@ window.addEventListener('load', function (ev) {
     cursor.init();
   };
 
+  var hamburgerMenu = function hamburgerMenu() {
+    var btn = document.querySelector("[hamburger-js]"),
+        hideScrollContainer = document.querySelectorAll("html, body"),
+        mobileContainer = document.querySelector("[mobile-block-js]"),
+        overlayNode = document.querySelector('#overlay');
+    btn.addEventListener("click", function (ev) {
+      var elem = ev.currentTarget;
+
+      if (elem.classList.contains('is-active')) {
+        elem.classList.remove("is-active");
+        mobileContainer.classList.remove("is-open");
+        mobileContainer.classList.add("is-animated");
+        overlayNode.style.display = 'none';
+        hideScrollContainer.forEach(function (val, idx) {
+          val.classList.remove("is-hideScroll");
+        });
+        setTimeout(function () {
+          mobileContainer.classList.remove("is-animated");
+        }, 300);
+      } else {
+        elem.classList.add("is-active");
+        mobileContainer.classList.add("is-open");
+        overlayNode.style.display = 'block';
+        hideScrollContainer.forEach(function (val, idx) {
+          val.classList.add("is-hideScroll");
+        });
+      }
+    });
+  };
+
   var wowScrollAnimation = function wowScrollAnimation() {
     new WOW().init();
   };
@@ -295,7 +342,10 @@ window.addEventListener('load', function (ev) {
   floatingAnimation();
   gaspAnimation();
   customCursor();
+  hamburgerMenu();
   wowScrollAnimation();
+  setTimeout(function () {// document.querySelector('body').classList.add('is-show');
+  }, 500);
 }, false); // EVENT LISTENER - SCROLL
 // ========================================
 

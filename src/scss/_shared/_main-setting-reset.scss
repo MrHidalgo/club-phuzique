@@ -15,6 +15,7 @@ html {
 }
 
 body {
+  //opacity: 0;
   overflow-x: hidden;
   position: relative;
   display: flex;
@@ -34,6 +35,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   @include adaptive(767) {
     padding-top: 85px;
+  }
+
+  &.is-show {
+    opacity: 1;
+    @include transition(opacity);
   }
 
   > .main {
