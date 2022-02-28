@@ -34,8 +34,15 @@ window.addEventListener('load', (ev) => {
       anchor.addEventListener('click', function (ev) {
         ev.preventDefault();
 
-        document.querySelector('.header__nav a[href^="#"].is-active').classList.remove('is-active');
+        document.querySelectorAll('.header__nav a').forEach((val, idx) => {
+          val.classList.remove('is-active');
+        });
+
         ev.currentTarget.classList.add('is-active');
+
+        if(ev.currentTarget.closest('.header')) {
+          document.querySelectorAll('.header__nav a[href="' + this.getAttribute('href') + '"]')[1].classList.add('is-active');
+        }
 
         document.querySelector(this.getAttribute('href')).scrollIntoView({
           behavior: 'smooth'
@@ -50,6 +57,8 @@ window.addEventListener('load', (ev) => {
           hideScrollContainer.forEach((val, idx) => {
             val.classList.remove("is-hideScroll");
           });
+
+          document.querySelectorAll('.header__nav a[href="' + this.getAttribute('href') + '"]')[0].classList.add('is-active');
 
           setTimeout(() => {
             mobileContainer.classList.remove("is-animated");
@@ -269,7 +278,10 @@ window.addEventListener('load', (ev) => {
   };
 
   const wowScrollAnimation = () => {
-    new WOW().init();
+    new WOW({
+      boxClass:     'wow',
+      animateClass: 'animate__animated'
+    }).init();
   };
 
 
@@ -280,11 +292,6 @@ window.addEventListener('load', (ev) => {
   customCursor();
   hamburgerMenu();
   wowScrollAnimation();
-
-
-  setTimeout(() => {
-    // document.querySelector('body').classList.add('is-show');
-  }, 500);
 
 }, false);
 

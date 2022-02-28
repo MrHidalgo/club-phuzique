@@ -126,8 +126,15 @@ window.addEventListener('load', function (ev) {
     document.querySelectorAll('.header__nav a[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener('click', function (ev) {
         ev.preventDefault();
-        document.querySelector('.header__nav a[href^="#"].is-active').classList.remove('is-active');
+        document.querySelectorAll('.header__nav a').forEach(function (val, idx) {
+          val.classList.remove('is-active');
+        });
         ev.currentTarget.classList.add('is-active');
+
+        if (ev.currentTarget.closest('.header')) {
+          document.querySelectorAll('.header__nav a[href="' + this.getAttribute('href') + '"]')[1].classList.add('is-active');
+        }
+
         document.querySelector(this.getAttribute('href')).scrollIntoView({
           behavior: 'smooth'
         });
@@ -140,6 +147,7 @@ window.addEventListener('load', function (ev) {
           hideScrollContainer.forEach(function (val, idx) {
             val.classList.remove("is-hideScroll");
           });
+          document.querySelectorAll('.header__nav a[href="' + this.getAttribute('href') + '"]')[0].classList.add('is-active');
           setTimeout(function () {
             mobileContainer.classList.remove("is-animated");
           }, 300);
@@ -334,7 +342,10 @@ window.addEventListener('load', function (ev) {
   };
 
   var wowScrollAnimation = function wowScrollAnimation() {
-    new WOW().init();
+    new WOW({
+      boxClass: 'wow',
+      animateClass: 'animate__animated'
+    }).init();
   };
 
   initHeaderFixed();
@@ -344,8 +355,6 @@ window.addEventListener('load', function (ev) {
   customCursor();
   hamburgerMenu();
   wowScrollAnimation();
-  setTimeout(function () {// document.querySelector('body').classList.add('is-show');
-  }, 500);
 }, false); // EVENT LISTENER - SCROLL
 // ========================================
 

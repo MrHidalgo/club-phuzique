@@ -256,12 +256,6 @@ body {
     padding-top: 85px;
   }
 }
-body.is-show {
-  opacity: 1;
-  -webkit-transition: opacity 0.3s ease-in-out;
-  -o-transition: opacity 0.3s ease-in-out;
-  transition: opacity 0.3s ease-in-out;
-}
 body > .main {
   display: -webkit-box;
   display: -ms-flexbox;
