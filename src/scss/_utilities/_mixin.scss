@@ -2,7 +2,7 @@
 /// @group  Mixin
 ////
 
-/// 
+///
 /// Mixin setting the width and height element.
 ///
 /// @name   mixinDimensions
@@ -300,7 +300,7 @@
 	}
 
 	@font-face {
-		font-family: quote($fontName);
+		font-family: quote($fontName), sans-serif;
 
 		src: $srcEot;
 		src: $src;
